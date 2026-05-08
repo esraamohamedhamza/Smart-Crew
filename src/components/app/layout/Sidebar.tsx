@@ -71,7 +71,7 @@ export function Sidebar({ isCollapsed }: { isCollapsed: boolean }) {
       </div>
 
       {/* User profile + Settings beneath it (per spec) */}
-      <div className="px-4 pt-4 pb-12 border-t border-white/10 space-y-2">
+      <div className="px-4 pt-4 pb-12 border-t border-white/10 dark:border-white/5 space-y-2">
         <Link
           to="/profile"
           className={`flex items-center gap-3 p-2 rounded-lg transition-colors ${
