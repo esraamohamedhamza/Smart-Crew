@@ -292,7 +292,7 @@ export function Dashboard() {
               id: "CF-2401",
               type: "Crew Shortage",
               status: "Auto-Resolved",
-              time: "2m ago",
+              time: "14:30:04 08-05-2026",
             },
             {
               id: "CF-2402",
