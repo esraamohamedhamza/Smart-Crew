@@ -27,7 +27,7 @@ const conflicts = [
     flight: "UA-4521",
     severity: "Low",
     status: "Review Required",
-    time: "1h ago",
+    time: "13:31:48 08-05-2026",
     aiActions: 2,
   },
 ];
