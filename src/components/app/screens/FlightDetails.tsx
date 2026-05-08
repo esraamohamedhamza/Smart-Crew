@@ -28,7 +28,7 @@ export function FlightDetails() {
             View History
           </button>
           <button
-            onClick={() => navigate({ to: `/flight/${flight.id}/risk` as never })}
+            onClick={() => navigate({ to: "/flight/$id/risk", params: { id: flight.id } })}
             className="px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:opacity-90 transition-opacity"
           >
             Risk Analysis
