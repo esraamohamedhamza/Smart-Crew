@@ -298,7 +298,7 @@ export function Dashboard() {
               id: "CF-2402",
               type: "Schedule Overlap",
               status: "Pending",
-              time: "15m ago",
+              time: "14:17:22 08-05-2026",
             },
             {
               id: "CF-2403",
