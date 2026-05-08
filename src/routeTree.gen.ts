@@ -9,50 +9,634 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppIndexRouteImport } from './routes/_app.index'
+import { Route as AppTimelineRouteImport } from './routes/_app.timeline'
+import { Route as AppSettingsRouteImport } from './routes/_app.settings'
+import { Route as AppSearchRouteImport } from './routes/_app.search'
+import { Route as AppProfileRouteImport } from './routes/_app.profile'
+import { Route as AppNotificationsRouteImport } from './routes/_app.notifications'
+import { Route as AppHelpRouteImport } from './routes/_app.help'
+import { Route as AppFleetRouteImport } from './routes/_app.fleet'
+import { Route as AppDelayedRouteImport } from './routes/_app.delayed'
+import { Route as AppConflictsRouteImport } from './routes/_app.conflicts'
+import { Route as AppAnalyticsRouteImport } from './routes/_app.analytics'
+import { Route as AppTimelineDelaysRouteImport } from './routes/_app.timeline.delays'
+import { Route as AppSettingsAutoHealRouteImport } from './routes/_app.settings.auto-heal'
+import { Route as AppKpiMetricRouteImport } from './routes/_app.kpi.$metric'
+import { Route as AppFlightIdRouteImport } from './routes/_app.flight.$id'
+import { Route as AppCrewProfilesRouteImport } from './routes/_app.crew.profiles'
+import { Route as AppCrewMatchRouteImport } from './routes/_app.crew.match'
+import { Route as AppCrewAvailabilityRouteImport } from './routes/_app.crew.availability'
+import { Route as AppFlightIdRiskRouteImport } from './routes/_app.flight.$id.risk'
+import { Route as AppFlightIdHistoryRouteImport } from './routes/_app.flight.$id.history'
+import { Route as AppCrewShiftSuccessRouteImport } from './routes/_app.crew.shift.success'
+import { Route as AppCrewAssignCrewIdRouteImport } from './routes/_app.crew.assign.$crewId'
+import { Route as AppConflictIdSuccessRouteImport } from './routes/_app.conflict.$id.success'
+import { Route as AppConflictIdScenariosRouteImport } from './routes/_app.conflict.$id.scenarios'
+import { Route as AppConflictIdConfirmRouteImport } from './routes/_app.conflict.$id.confirm'
+import { Route as AppConflictIdScenarioScenarioIdRouteImport } from './routes/_app.conflict.$id.scenario.$scenarioId'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTimelineRoute = AppTimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSearchRoute = AppSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNotificationsRoute = AppNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHelpRoute = AppHelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFleetRoute = AppFleetRouteImport.update({
+  id: '/fleet',
+  path: '/fleet',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDelayedRoute = AppDelayedRouteImport.update({
+  id: '/delayed',
+  path: '/delayed',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConflictsRoute = AppConflictsRouteImport.update({
+  id: '/conflicts',
+  path: '/conflicts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTimelineDelaysRoute = AppTimelineDelaysRouteImport.update({
+  id: '/delays',
+  path: '/delays',
+  getParentRoute: () => AppTimelineRoute,
+} as any)
+const AppSettingsAutoHealRoute = AppSettingsAutoHealRouteImport.update({
+  id: '/auto-heal',
+  path: '/auto-heal',
+  getParentRoute: () => AppSettingsRoute,
+} as any)
+const AppKpiMetricRoute = AppKpiMetricRouteImport.update({
+  id: '/kpi/$metric',
+  path: '/kpi/$metric',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFlightIdRoute = AppFlightIdRouteImport.update({
+  id: '/flight/$id',
+  path: '/flight/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCrewProfilesRoute = AppCrewProfilesRouteImport.update({
+  id: '/crew/profiles',
+  path: '/crew/profiles',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCrewMatchRoute = AppCrewMatchRouteImport.update({
+  id: '/crew/match',
+  path: '/crew/match',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCrewAvailabilityRoute = AppCrewAvailabilityRouteImport.update({
+  id: '/crew/availability',
+  path: '/crew/availability',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFlightIdRiskRoute = AppFlightIdRiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => AppFlightIdRoute,
+} as any)
+const AppFlightIdHistoryRoute = AppFlightIdHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AppFlightIdRoute,
+} as any)
+const AppCrewShiftSuccessRoute = AppCrewShiftSuccessRouteImport.update({
+  id: '/crew/shift/success',
+  path: '/crew/shift/success',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCrewAssignCrewIdRoute = AppCrewAssignCrewIdRouteImport.update({
+  id: '/crew/assign/$crewId',
+  path: '/crew/assign/$crewId',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConflictIdSuccessRoute = AppConflictIdSuccessRouteImport.update({
+  id: '/conflict/$id/success',
+  path: '/conflict/$id/success',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConflictIdScenariosRoute = AppConflictIdScenariosRouteImport.update({
+  id: '/conflict/$id/scenarios',
+  path: '/conflict/$id/scenarios',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConflictIdConfirmRoute = AppConflictIdConfirmRouteImport.update({
+  id: '/conflict/$id/confirm',
+  path: '/conflict/$id/confirm',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConflictIdScenarioScenarioIdRoute =
+  AppConflictIdScenarioScenarioIdRouteImport.update({
+    id: '/conflict/$id/scenario/$scenarioId',
+    path: '/conflict/$id/scenario/$scenarioId',
+    getParentRoute: () => AppRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof AppIndexRoute
+  '/analytics': typeof AppAnalyticsRoute
+  '/conflicts': typeof AppConflictsRoute
+  '/delayed': typeof AppDelayedRoute
+  '/fleet': typeof AppFleetRoute
+  '/help': typeof AppHelpRoute
+  '/notifications': typeof AppNotificationsRoute
+  '/profile': typeof AppProfileRoute
+  '/search': typeof AppSearchRoute
+  '/settings': typeof AppSettingsRouteWithChildren
+  '/timeline': typeof AppTimelineRouteWithChildren
+  '/crew/availability': typeof AppCrewAvailabilityRoute
+  '/crew/match': typeof AppCrewMatchRoute
+  '/crew/profiles': typeof AppCrewProfilesRoute
+  '/flight/$id': typeof AppFlightIdRouteWithChildren
+  '/kpi/$metric': typeof AppKpiMetricRoute
+  '/settings/auto-heal': typeof AppSettingsAutoHealRoute
+  '/timeline/delays': typeof AppTimelineDelaysRoute
+  '/conflict/$id/confirm': typeof AppConflictIdConfirmRoute
+  '/conflict/$id/scenarios': typeof AppConflictIdScenariosRoute
+  '/conflict/$id/success': typeof AppConflictIdSuccessRoute
+  '/crew/assign/$crewId': typeof AppCrewAssignCrewIdRoute
+  '/crew/shift/success': typeof AppCrewShiftSuccessRoute
+  '/flight/$id/history': typeof AppFlightIdHistoryRoute
+  '/flight/$id/risk': typeof AppFlightIdRiskRoute
+  '/conflict/$id/scenario/$scenarioId': typeof AppConflictIdScenarioScenarioIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/analytics': typeof AppAnalyticsRoute
+  '/conflicts': typeof AppConflictsRoute
+  '/delayed': typeof AppDelayedRoute
+  '/fleet': typeof AppFleetRoute
+  '/help': typeof AppHelpRoute
+  '/notifications': typeof AppNotificationsRoute
+  '/profile': typeof AppProfileRoute
+  '/search': typeof AppSearchRoute
+  '/settings': typeof AppSettingsRouteWithChildren
+  '/timeline': typeof AppTimelineRouteWithChildren
+  '/': typeof AppIndexRoute
+  '/crew/availability': typeof AppCrewAvailabilityRoute
+  '/crew/match': typeof AppCrewMatchRoute
+  '/crew/profiles': typeof AppCrewProfilesRoute
+  '/flight/$id': typeof AppFlightIdRouteWithChildren
+  '/kpi/$metric': typeof AppKpiMetricRoute
+  '/settings/auto-heal': typeof AppSettingsAutoHealRoute
+  '/timeline/delays': typeof AppTimelineDelaysRoute
+  '/conflict/$id/confirm': typeof AppConflictIdConfirmRoute
+  '/conflict/$id/scenarios': typeof AppConflictIdScenariosRoute
+  '/conflict/$id/success': typeof AppConflictIdSuccessRoute
+  '/crew/assign/$crewId': typeof AppCrewAssignCrewIdRoute
+  '/crew/shift/success': typeof AppCrewShiftSuccessRoute
+  '/flight/$id/history': typeof AppFlightIdHistoryRoute
+  '/flight/$id/risk': typeof AppFlightIdRiskRoute
+  '/conflict/$id/scenario/$scenarioId': typeof AppConflictIdScenarioScenarioIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/analytics': typeof AppAnalyticsRoute
+  '/_app/conflicts': typeof AppConflictsRoute
+  '/_app/delayed': typeof AppDelayedRoute
+  '/_app/fleet': typeof AppFleetRoute
+  '/_app/help': typeof AppHelpRoute
+  '/_app/notifications': typeof AppNotificationsRoute
+  '/_app/profile': typeof AppProfileRoute
+  '/_app/search': typeof AppSearchRoute
+  '/_app/settings': typeof AppSettingsRouteWithChildren
+  '/_app/timeline': typeof AppTimelineRouteWithChildren
+  '/_app/': typeof AppIndexRoute
+  '/_app/crew/availability': typeof AppCrewAvailabilityRoute
+  '/_app/crew/match': typeof AppCrewMatchRoute
+  '/_app/crew/profiles': typeof AppCrewProfilesRoute
+  '/_app/flight/$id': typeof AppFlightIdRouteWithChildren
+  '/_app/kpi/$metric': typeof AppKpiMetricRoute
+  '/_app/settings/auto-heal': typeof AppSettingsAutoHealRoute
+  '/_app/timeline/delays': typeof AppTimelineDelaysRoute
+  '/_app/conflict/$id/confirm': typeof AppConflictIdConfirmRoute
+  '/_app/conflict/$id/scenarios': typeof AppConflictIdScenariosRoute
+  '/_app/conflict/$id/success': typeof AppConflictIdSuccessRoute
+  '/_app/crew/assign/$crewId': typeof AppCrewAssignCrewIdRoute
+  '/_app/crew/shift/success': typeof AppCrewShiftSuccessRoute
+  '/_app/flight/$id/history': typeof AppFlightIdHistoryRoute
+  '/_app/flight/$id/risk': typeof AppFlightIdRiskRoute
+  '/_app/conflict/$id/scenario/$scenarioId': typeof AppConflictIdScenarioScenarioIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/conflicts'
+    | '/delayed'
+    | '/fleet'
+    | '/help'
+    | '/notifications'
+    | '/profile'
+    | '/search'
+    | '/settings'
+    | '/timeline'
+    | '/crew/availability'
+    | '/crew/match'
+    | '/crew/profiles'
+    | '/flight/$id'
+    | '/kpi/$metric'
+    | '/settings/auto-heal'
+    | '/timeline/delays'
+    | '/conflict/$id/confirm'
+    | '/conflict/$id/scenarios'
+    | '/conflict/$id/success'
+    | '/crew/assign/$crewId'
+    | '/crew/shift/success'
+    | '/flight/$id/history'
+    | '/flight/$id/risk'
+    | '/conflict/$id/scenario/$scenarioId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/analytics'
+    | '/conflicts'
+    | '/delayed'
+    | '/fleet'
+    | '/help'
+    | '/notifications'
+    | '/profile'
+    | '/search'
+    | '/settings'
+    | '/timeline'
+    | '/'
+    | '/crew/availability'
+    | '/crew/match'
+    | '/crew/profiles'
+    | '/flight/$id'
+    | '/kpi/$metric'
+    | '/settings/auto-heal'
+    | '/timeline/delays'
+    | '/conflict/$id/confirm'
+    | '/conflict/$id/scenarios'
+    | '/conflict/$id/success'
+    | '/crew/assign/$crewId'
+    | '/crew/shift/success'
+    | '/flight/$id/history'
+    | '/flight/$id/risk'
+    | '/conflict/$id/scenario/$scenarioId'
+  id:
+    | '__root__'
+    | '/_app'
+    | '/_app/analytics'
+    | '/_app/conflicts'
+    | '/_app/delayed'
+    | '/_app/fleet'
+    | '/_app/help'
+    | '/_app/notifications'
+    | '/_app/profile'
+    | '/_app/search'
+    | '/_app/settings'
+    | '/_app/timeline'
+    | '/_app/'
+    | '/_app/crew/availability'
+    | '/_app/crew/match'
+    | '/_app/crew/profiles'
+    | '/_app/flight/$id'
+    | '/_app/kpi/$metric'
+    | '/_app/settings/auto-heal'
+    | '/_app/timeline/delays'
+    | '/_app/conflict/$id/confirm'
+    | '/_app/conflict/$id/scenarios'
+    | '/_app/conflict/$id/success'
+    | '/_app/crew/assign/$crewId'
+    | '/_app/crew/shift/success'
+    | '/_app/flight/$id/history'
+    | '/_app/flight/$id/risk'
+    | '/_app/conflict/$id/scenario/$scenarioId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/': {
+      id: '/_app/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/timeline': {
+      id: '/_app/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof AppTimelineRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/settings': {
+      id: '/_app/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/search': {
+      id: '/_app/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof AppSearchRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/profile': {
+      id: '/_app/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/notifications': {
+      id: '/_app/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AppNotificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/help': {
+      id: '/_app/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof AppHelpRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/fleet': {
+      id: '/_app/fleet'
+      path: '/fleet'
+      fullPath: '/fleet'
+      preLoaderRoute: typeof AppFleetRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/delayed': {
+      id: '/_app/delayed'
+      path: '/delayed'
+      fullPath: '/delayed'
+      preLoaderRoute: typeof AppDelayedRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/conflicts': {
+      id: '/_app/conflicts'
+      path: '/conflicts'
+      fullPath: '/conflicts'
+      preLoaderRoute: typeof AppConflictsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/analytics': {
+      id: '/_app/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AppAnalyticsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/timeline/delays': {
+      id: '/_app/timeline/delays'
+      path: '/delays'
+      fullPath: '/timeline/delays'
+      preLoaderRoute: typeof AppTimelineDelaysRouteImport
+      parentRoute: typeof AppTimelineRoute
+    }
+    '/_app/settings/auto-heal': {
+      id: '/_app/settings/auto-heal'
+      path: '/auto-heal'
+      fullPath: '/settings/auto-heal'
+      preLoaderRoute: typeof AppSettingsAutoHealRouteImport
+      parentRoute: typeof AppSettingsRoute
+    }
+    '/_app/kpi/$metric': {
+      id: '/_app/kpi/$metric'
+      path: '/kpi/$metric'
+      fullPath: '/kpi/$metric'
+      preLoaderRoute: typeof AppKpiMetricRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/flight/$id': {
+      id: '/_app/flight/$id'
+      path: '/flight/$id'
+      fullPath: '/flight/$id'
+      preLoaderRoute: typeof AppFlightIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crew/profiles': {
+      id: '/_app/crew/profiles'
+      path: '/crew/profiles'
+      fullPath: '/crew/profiles'
+      preLoaderRoute: typeof AppCrewProfilesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crew/match': {
+      id: '/_app/crew/match'
+      path: '/crew/match'
+      fullPath: '/crew/match'
+      preLoaderRoute: typeof AppCrewMatchRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crew/availability': {
+      id: '/_app/crew/availability'
+      path: '/crew/availability'
+      fullPath: '/crew/availability'
+      preLoaderRoute: typeof AppCrewAvailabilityRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/flight/$id/risk': {
+      id: '/_app/flight/$id/risk'
+      path: '/risk'
+      fullPath: '/flight/$id/risk'
+      preLoaderRoute: typeof AppFlightIdRiskRouteImport
+      parentRoute: typeof AppFlightIdRoute
+    }
+    '/_app/flight/$id/history': {
+      id: '/_app/flight/$id/history'
+      path: '/history'
+      fullPath: '/flight/$id/history'
+      preLoaderRoute: typeof AppFlightIdHistoryRouteImport
+      parentRoute: typeof AppFlightIdRoute
+    }
+    '/_app/crew/shift/success': {
+      id: '/_app/crew/shift/success'
+      path: '/crew/shift/success'
+      fullPath: '/crew/shift/success'
+      preLoaderRoute: typeof AppCrewShiftSuccessRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crew/assign/$crewId': {
+      id: '/_app/crew/assign/$crewId'
+      path: '/crew/assign/$crewId'
+      fullPath: '/crew/assign/$crewId'
+      preLoaderRoute: typeof AppCrewAssignCrewIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/conflict/$id/success': {
+      id: '/_app/conflict/$id/success'
+      path: '/conflict/$id/success'
+      fullPath: '/conflict/$id/success'
+      preLoaderRoute: typeof AppConflictIdSuccessRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/conflict/$id/scenarios': {
+      id: '/_app/conflict/$id/scenarios'
+      path: '/conflict/$id/scenarios'
+      fullPath: '/conflict/$id/scenarios'
+      preLoaderRoute: typeof AppConflictIdScenariosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/conflict/$id/confirm': {
+      id: '/_app/conflict/$id/confirm'
+      path: '/conflict/$id/confirm'
+      fullPath: '/conflict/$id/confirm'
+      preLoaderRoute: typeof AppConflictIdConfirmRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/conflict/$id/scenario/$scenarioId': {
+      id: '/_app/conflict/$id/scenario/$scenarioId'
+      path: '/conflict/$id/scenario/$scenarioId'
+      fullPath: '/conflict/$id/scenario/$scenarioId'
+      preLoaderRoute: typeof AppConflictIdScenarioScenarioIdRouteImport
+      parentRoute: typeof AppRoute
     }
   }
 }
 
+interface AppSettingsRouteChildren {
+  AppSettingsAutoHealRoute: typeof AppSettingsAutoHealRoute
+}
+
+const AppSettingsRouteChildren: AppSettingsRouteChildren = {
+  AppSettingsAutoHealRoute: AppSettingsAutoHealRoute,
+}
+
+const AppSettingsRouteWithChildren = AppSettingsRoute._addFileChildren(
+  AppSettingsRouteChildren,
+)
+
+interface AppTimelineRouteChildren {
+  AppTimelineDelaysRoute: typeof AppTimelineDelaysRoute
+}
+
+const AppTimelineRouteChildren: AppTimelineRouteChildren = {
+  AppTimelineDelaysRoute: AppTimelineDelaysRoute,
+}
+
+const AppTimelineRouteWithChildren = AppTimelineRoute._addFileChildren(
+  AppTimelineRouteChildren,
+)
+
+interface AppFlightIdRouteChildren {
+  AppFlightIdHistoryRoute: typeof AppFlightIdHistoryRoute
+  AppFlightIdRiskRoute: typeof AppFlightIdRiskRoute
+}
+
+const AppFlightIdRouteChildren: AppFlightIdRouteChildren = {
+  AppFlightIdHistoryRoute: AppFlightIdHistoryRoute,
+  AppFlightIdRiskRoute: AppFlightIdRiskRoute,
+}
+
+const AppFlightIdRouteWithChildren = AppFlightIdRoute._addFileChildren(
+  AppFlightIdRouteChildren,
+)
+
+interface AppRouteChildren {
+  AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppConflictsRoute: typeof AppConflictsRoute
+  AppDelayedRoute: typeof AppDelayedRoute
+  AppFleetRoute: typeof AppFleetRoute
+  AppHelpRoute: typeof AppHelpRoute
+  AppNotificationsRoute: typeof AppNotificationsRoute
+  AppProfileRoute: typeof AppProfileRoute
+  AppSearchRoute: typeof AppSearchRoute
+  AppSettingsRoute: typeof AppSettingsRouteWithChildren
+  AppTimelineRoute: typeof AppTimelineRouteWithChildren
+  AppIndexRoute: typeof AppIndexRoute
+  AppCrewAvailabilityRoute: typeof AppCrewAvailabilityRoute
+  AppCrewMatchRoute: typeof AppCrewMatchRoute
+  AppCrewProfilesRoute: typeof AppCrewProfilesRoute
+  AppFlightIdRoute: typeof AppFlightIdRouteWithChildren
+  AppKpiMetricRoute: typeof AppKpiMetricRoute
+  AppConflictIdConfirmRoute: typeof AppConflictIdConfirmRoute
+  AppConflictIdScenariosRoute: typeof AppConflictIdScenariosRoute
+  AppConflictIdSuccessRoute: typeof AppConflictIdSuccessRoute
+  AppCrewAssignCrewIdRoute: typeof AppCrewAssignCrewIdRoute
+  AppCrewShiftSuccessRoute: typeof AppCrewShiftSuccessRoute
+  AppConflictIdScenarioScenarioIdRoute: typeof AppConflictIdScenarioScenarioIdRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAnalyticsRoute: AppAnalyticsRoute,
+  AppConflictsRoute: AppConflictsRoute,
+  AppDelayedRoute: AppDelayedRoute,
+  AppFleetRoute: AppFleetRoute,
+  AppHelpRoute: AppHelpRoute,
+  AppNotificationsRoute: AppNotificationsRoute,
+  AppProfileRoute: AppProfileRoute,
+  AppSearchRoute: AppSearchRoute,
+  AppSettingsRoute: AppSettingsRouteWithChildren,
+  AppTimelineRoute: AppTimelineRouteWithChildren,
+  AppIndexRoute: AppIndexRoute,
+  AppCrewAvailabilityRoute: AppCrewAvailabilityRoute,
+  AppCrewMatchRoute: AppCrewMatchRoute,
+  AppCrewProfilesRoute: AppCrewProfilesRoute,
+  AppFlightIdRoute: AppFlightIdRouteWithChildren,
+  AppKpiMetricRoute: AppKpiMetricRoute,
+  AppConflictIdConfirmRoute: AppConflictIdConfirmRoute,
+  AppConflictIdScenariosRoute: AppConflictIdScenariosRoute,
+  AppConflictIdSuccessRoute: AppConflictIdSuccessRoute,
+  AppCrewAssignCrewIdRoute: AppCrewAssignCrewIdRoute,
+  AppCrewShiftSuccessRoute: AppCrewShiftSuccessRoute,
+  AppConflictIdScenarioScenarioIdRoute: AppConflictIdScenarioScenarioIdRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
