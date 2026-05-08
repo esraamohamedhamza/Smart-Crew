@@ -22,7 +22,7 @@ export function FlightDetails() {
         </div>
         <div className="flex gap-2">
           <button
-            onClick={() => navigate({ to: `/flight/${flight.id}/history` as never })}
+            onClick={() => navigate({ to: "/flight/$id/history", params: { id: flight.id } })}
             className="px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
           >
             View History
