@@ -59,8 +59,8 @@ export function Sidebar({ isCollapsed }: { isCollapsed: boolean }) {
   const settingsActive = location.pathname.startsWith("/settings");
 
   return (
-    <div className="h-full flex flex-col bg-[#006937] dark:bg-[#003D20]">
-      <div className={`border-b border-white/10 ${isCollapsed ? "px-2 py-5" : "px-4 py-6"}`}>
+    <div className="h-full flex flex-col bg-[#006937] dark:bg-[#131E40] dark:border-r dark:border-white/5">
+      <div className={`border-b border-white/10 dark:border-white/5 ${isCollapsed ? "px-2 py-5" : "px-4 py-6"}`}>
         <Logo iconOnly={isCollapsed} />
       </div>
 
