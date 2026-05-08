@@ -22,7 +22,7 @@ import { Route as AppDelayedRouteImport } from './routes/_app.delayed'
 import { Route as AppConflictsRouteImport } from './routes/_app.conflicts'
 import { Route as AppAnalyticsRouteImport } from './routes/_app.analytics'
 import { Route as AppTimelineDelaysRouteImport } from './routes/_app.timeline.delays'
-import { Route as AppSettingsAutoHealRouteImport } from './routes/_app.settings.auto-heal'
+import { Route as AppSettingsAutoHealRouteImport } from './routes/_app.settings_.auto-heal'
 import { Route as AppKpiMetricRouteImport } from './routes/_app.kpi.$metric'
 import { Route as AppFlightIdRouteImport } from './routes/_app.flight.$id'
 import { Route as AppCrewProfilesRouteImport } from './routes/_app.crew.profiles'
@@ -102,9 +102,9 @@ const AppTimelineDelaysRoute = AppTimelineDelaysRouteImport.update({
   getParentRoute: () => AppTimelineRoute,
 } as any)
 const AppSettingsAutoHealRoute = AppSettingsAutoHealRouteImport.update({
-  id: '/auto-heal',
-  path: '/auto-heal',
-  getParentRoute: () => AppSettingsRoute,
+  id: '/settings_/auto-heal',
+  path: '/settings/auto-heal',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppKpiMetricRoute = AppKpiMetricRouteImport.update({
   id: '/kpi/$metric',
@@ -183,7 +183,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof AppNotificationsRoute
   '/profile': typeof AppProfileRoute
   '/search': typeof AppSearchRoute
-  '/settings': typeof AppSettingsRouteWithChildren
+  '/settings': typeof AppSettingsRoute
   '/timeline': typeof AppTimelineRouteWithChildren
   '/crew/availability': typeof AppCrewAvailabilityRoute
   '/crew/match': typeof AppCrewMatchRoute
@@ -210,7 +210,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof AppNotificationsRoute
   '/profile': typeof AppProfileRoute
   '/search': typeof AppSearchRoute
-  '/settings': typeof AppSettingsRouteWithChildren
+  '/settings': typeof AppSettingsRoute
   '/timeline': typeof AppTimelineRouteWithChildren
   '/': typeof AppIndexRoute
   '/crew/availability': typeof AppCrewAvailabilityRoute
@@ -240,7 +240,7 @@ export interface FileRoutesById {
   '/_app/notifications': typeof AppNotificationsRoute
   '/_app/profile': typeof AppProfileRoute
   '/_app/search': typeof AppSearchRoute
-  '/_app/settings': typeof AppSettingsRouteWithChildren
+  '/_app/settings': typeof AppSettingsRoute
   '/_app/timeline': typeof AppTimelineRouteWithChildren
   '/_app/': typeof AppIndexRoute
   '/_app/crew/availability': typeof AppCrewAvailabilityRoute
@@ -248,7 +248,7 @@ export interface FileRoutesById {
   '/_app/crew/profiles': typeof AppCrewProfilesRoute
   '/_app/flight/$id': typeof AppFlightIdRouteWithChildren
   '/_app/kpi/$metric': typeof AppKpiMetricRoute
-  '/_app/settings/auto-heal': typeof AppSettingsAutoHealRoute
+  '/_app/settings_/auto-heal': typeof AppSettingsAutoHealRoute
   '/_app/timeline/delays': typeof AppTimelineDelaysRoute
   '/_app/conflict/$id/confirm': typeof AppConflictIdConfirmRoute
   '/_app/conflict/$id/scenarios': typeof AppConflictIdScenariosRoute
@@ -335,7 +335,7 @@ export interface FileRouteTypes {
     | '/_app/crew/profiles'
     | '/_app/flight/$id'
     | '/_app/kpi/$metric'
-    | '/_app/settings/auto-heal'
+    | '/_app/settings_/auto-heal'
     | '/_app/timeline/delays'
     | '/_app/conflict/$id/confirm'
     | '/_app/conflict/$id/scenarios'
@@ -444,12 +444,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTimelineDelaysRouteImport
       parentRoute: typeof AppTimelineRoute
     }
-    '/_app/settings/auto-heal': {
-      id: '/_app/settings/auto-heal'
-      path: '/auto-heal'
+    '/_app/settings_/auto-heal': {
+      id: '/_app/settings_/auto-heal'
+      path: '/settings/auto-heal'
       fullPath: '/settings/auto-heal'
       preLoaderRoute: typeof AppSettingsAutoHealRouteImport
-      parentRoute: typeof AppSettingsRoute
+      parentRoute: typeof AppRoute
     }
     '/_app/kpi/$metric': {
       id: '/_app/kpi/$metric'
@@ -545,18 +545,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AppSettingsRouteChildren {
-  AppSettingsAutoHealRoute: typeof AppSettingsAutoHealRoute
-}
-
-const AppSettingsRouteChildren: AppSettingsRouteChildren = {
-  AppSettingsAutoHealRoute: AppSettingsAutoHealRoute,
-}
-
-const AppSettingsRouteWithChildren = AppSettingsRoute._addFileChildren(
-  AppSettingsRouteChildren,
-)
-
 interface AppTimelineRouteChildren {
   AppTimelineDelaysRoute: typeof AppTimelineDelaysRoute
 }
@@ -592,7 +580,7 @@ interface AppRouteChildren {
   AppNotificationsRoute: typeof AppNotificationsRoute
   AppProfileRoute: typeof AppProfileRoute
   AppSearchRoute: typeof AppSearchRoute
-  AppSettingsRoute: typeof AppSettingsRouteWithChildren
+  AppSettingsRoute: typeof AppSettingsRoute
   AppTimelineRoute: typeof AppTimelineRouteWithChildren
   AppIndexRoute: typeof AppIndexRoute
   AppCrewAvailabilityRoute: typeof AppCrewAvailabilityRoute
@@ -600,6 +588,7 @@ interface AppRouteChildren {
   AppCrewProfilesRoute: typeof AppCrewProfilesRoute
   AppFlightIdRoute: typeof AppFlightIdRouteWithChildren
   AppKpiMetricRoute: typeof AppKpiMetricRoute
+  AppSettingsAutoHealRoute: typeof AppSettingsAutoHealRoute
   AppConflictIdConfirmRoute: typeof AppConflictIdConfirmRoute
   AppConflictIdScenariosRoute: typeof AppConflictIdScenariosRoute
   AppConflictIdSuccessRoute: typeof AppConflictIdSuccessRoute
@@ -617,7 +606,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppNotificationsRoute: AppNotificationsRoute,
   AppProfileRoute: AppProfileRoute,
   AppSearchRoute: AppSearchRoute,
-  AppSettingsRoute: AppSettingsRouteWithChildren,
+  AppSettingsRoute: AppSettingsRoute,
   AppTimelineRoute: AppTimelineRouteWithChildren,
   AppIndexRoute: AppIndexRoute,
   AppCrewAvailabilityRoute: AppCrewAvailabilityRoute,
@@ -625,6 +614,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppCrewProfilesRoute: AppCrewProfilesRoute,
   AppFlightIdRoute: AppFlightIdRouteWithChildren,
   AppKpiMetricRoute: AppKpiMetricRoute,
+  AppSettingsAutoHealRoute: AppSettingsAutoHealRoute,
   AppConflictIdConfirmRoute: AppConflictIdConfirmRoute,
   AppConflictIdScenariosRoute: AppConflictIdScenariosRoute,
   AppConflictIdSuccessRoute: AppConflictIdSuccessRoute,
@@ -641,3 +631,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
