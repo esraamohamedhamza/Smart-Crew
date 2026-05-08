@@ -18,7 +18,7 @@ const conflicts = [
     flight: "DL-8847",
     severity: "Medium",
     status: "Pending",
-    time: "15m ago",
+    time: "14:17:22 08-05-2026",
     aiActions: 3,
   },
   {
