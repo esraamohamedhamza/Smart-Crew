@@ -9,7 +9,7 @@ const conflicts = [
     flight: "AA-1523",
     severity: "High",
     status: "Auto-Resolved",
-    time: "2m ago",
+    time: "14:30:04 08-05-2026",
     aiActions: 1,
   },
   {
