@@ -28,8 +28,8 @@ import { Route as AppFlightIdRouteImport } from './routes/_app.flight.$id'
 import { Route as AppCrewProfilesRouteImport } from './routes/_app.crew.profiles'
 import { Route as AppCrewMatchRouteImport } from './routes/_app.crew.match'
 import { Route as AppCrewAvailabilityRouteImport } from './routes/_app.crew.availability'
-import { Route as AppFlightIdRiskRouteImport } from './routes/_app.flight.$id.risk'
-import { Route as AppFlightIdHistoryRouteImport } from './routes/_app.flight.$id.history'
+import { Route as AppFlightIdRiskRouteImport } from './routes/_app.flight.$id_.risk'
+import { Route as AppFlightIdHistoryRouteImport } from './routes/_app.flight.$id_.history'
 import { Route as AppCrewShiftSuccessRouteImport } from './routes/_app.crew.shift.success'
 import { Route as AppCrewAssignCrewIdRouteImport } from './routes/_app.crew.assign.$crewId'
 import { Route as AppConflictIdSuccessRouteImport } from './routes/_app.conflict.$id.success'
@@ -132,14 +132,14 @@ const AppCrewAvailabilityRoute = AppCrewAvailabilityRouteImport.update({
   getParentRoute: () => AppRoute,
 } as any)
 const AppFlightIdRiskRoute = AppFlightIdRiskRouteImport.update({
-  id: '/risk',
-  path: '/risk',
-  getParentRoute: () => AppFlightIdRoute,
+  id: '/flight/$id_/risk',
+  path: '/flight/$id/risk',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppFlightIdHistoryRoute = AppFlightIdHistoryRouteImport.update({
-  id: '/history',
-  path: '/history',
-  getParentRoute: () => AppFlightIdRoute,
+  id: '/flight/$id_/history',
+  path: '/flight/$id/history',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppCrewShiftSuccessRoute = AppCrewShiftSuccessRouteImport.update({
   id: '/crew/shift/success',
@@ -188,7 +188,7 @@ export interface FileRoutesByFullPath {
   '/crew/availability': typeof AppCrewAvailabilityRoute
   '/crew/match': typeof AppCrewMatchRoute
   '/crew/profiles': typeof AppCrewProfilesRoute
-  '/flight/$id': typeof AppFlightIdRouteWithChildren
+  '/flight/$id': typeof AppFlightIdRoute
   '/kpi/$metric': typeof AppKpiMetricRoute
   '/settings/auto-heal': typeof AppSettingsAutoHealRoute
   '/timeline/delays': typeof AppTimelineDelaysRoute
@@ -216,7 +216,7 @@ export interface FileRoutesByTo {
   '/crew/availability': typeof AppCrewAvailabilityRoute
   '/crew/match': typeof AppCrewMatchRoute
   '/crew/profiles': typeof AppCrewProfilesRoute
-  '/flight/$id': typeof AppFlightIdRouteWithChildren
+  '/flight/$id': typeof AppFlightIdRoute
   '/kpi/$metric': typeof AppKpiMetricRoute
   '/settings/auto-heal': typeof AppSettingsAutoHealRoute
   '/timeline/delays': typeof AppTimelineDelaysRoute
@@ -246,7 +246,7 @@ export interface FileRoutesById {
   '/_app/crew/availability': typeof AppCrewAvailabilityRoute
   '/_app/crew/match': typeof AppCrewMatchRoute
   '/_app/crew/profiles': typeof AppCrewProfilesRoute
-  '/_app/flight/$id': typeof AppFlightIdRouteWithChildren
+  '/_app/flight/$id': typeof AppFlightIdRoute
   '/_app/kpi/$metric': typeof AppKpiMetricRoute
   '/_app/settings_/auto-heal': typeof AppSettingsAutoHealRoute
   '/_app/timeline/delays': typeof AppTimelineDelaysRoute
@@ -255,8 +255,8 @@ export interface FileRoutesById {
   '/_app/conflict/$id/success': typeof AppConflictIdSuccessRoute
   '/_app/crew/assign/$crewId': typeof AppCrewAssignCrewIdRoute
   '/_app/crew/shift/success': typeof AppCrewShiftSuccessRoute
-  '/_app/flight/$id/history': typeof AppFlightIdHistoryRoute
-  '/_app/flight/$id/risk': typeof AppFlightIdRiskRoute
+  '/_app/flight/$id_/history': typeof AppFlightIdHistoryRoute
+  '/_app/flight/$id_/risk': typeof AppFlightIdRiskRoute
   '/_app/conflict/$id/scenario/$scenarioId': typeof AppConflictIdScenarioScenarioIdRoute
 }
 export interface FileRouteTypes {
@@ -342,8 +342,8 @@ export interface FileRouteTypes {
     | '/_app/conflict/$id/success'
     | '/_app/crew/assign/$crewId'
     | '/_app/crew/shift/success'
-    | '/_app/flight/$id/history'
-    | '/_app/flight/$id/risk'
+    | '/_app/flight/$id_/history'
+    | '/_app/flight/$id_/risk'
     | '/_app/conflict/$id/scenario/$scenarioId'
   fileRoutesById: FileRoutesById
 }
@@ -486,19 +486,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCrewAvailabilityRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/flight/$id/risk': {
-      id: '/_app/flight/$id/risk'
-      path: '/risk'
+    '/_app/flight/$id_/risk': {
+      id: '/_app/flight/$id_/risk'
+      path: '/flight/$id/risk'
       fullPath: '/flight/$id/risk'
       preLoaderRoute: typeof AppFlightIdRiskRouteImport
-      parentRoute: typeof AppFlightIdRoute
+      parentRoute: typeof AppRoute
     }
-    '/_app/flight/$id/history': {
-      id: '/_app/flight/$id/history'
-      path: '/history'
+    '/_app/flight/$id_/history': {
+      id: '/_app/flight/$id_/history'
+      path: '/flight/$id/history'
       fullPath: '/flight/$id/history'
       preLoaderRoute: typeof AppFlightIdHistoryRouteImport
-      parentRoute: typeof AppFlightIdRoute
+      parentRoute: typeof AppRoute
     }
     '/_app/crew/shift/success': {
       id: '/_app/crew/shift/success'
@@ -557,20 +557,6 @@ const AppTimelineRouteWithChildren = AppTimelineRoute._addFileChildren(
   AppTimelineRouteChildren,
 )
 
-interface AppFlightIdRouteChildren {
-  AppFlightIdHistoryRoute: typeof AppFlightIdHistoryRoute
-  AppFlightIdRiskRoute: typeof AppFlightIdRiskRoute
-}
-
-const AppFlightIdRouteChildren: AppFlightIdRouteChildren = {
-  AppFlightIdHistoryRoute: AppFlightIdHistoryRoute,
-  AppFlightIdRiskRoute: AppFlightIdRiskRoute,
-}
-
-const AppFlightIdRouteWithChildren = AppFlightIdRoute._addFileChildren(
-  AppFlightIdRouteChildren,
-)
-
 interface AppRouteChildren {
   AppAnalyticsRoute: typeof AppAnalyticsRoute
   AppConflictsRoute: typeof AppConflictsRoute
@@ -586,7 +572,7 @@ interface AppRouteChildren {
   AppCrewAvailabilityRoute: typeof AppCrewAvailabilityRoute
   AppCrewMatchRoute: typeof AppCrewMatchRoute
   AppCrewProfilesRoute: typeof AppCrewProfilesRoute
-  AppFlightIdRoute: typeof AppFlightIdRouteWithChildren
+  AppFlightIdRoute: typeof AppFlightIdRoute
   AppKpiMetricRoute: typeof AppKpiMetricRoute
   AppSettingsAutoHealRoute: typeof AppSettingsAutoHealRoute
   AppConflictIdConfirmRoute: typeof AppConflictIdConfirmRoute
@@ -594,6 +580,8 @@ interface AppRouteChildren {
   AppConflictIdSuccessRoute: typeof AppConflictIdSuccessRoute
   AppCrewAssignCrewIdRoute: typeof AppCrewAssignCrewIdRoute
   AppCrewShiftSuccessRoute: typeof AppCrewShiftSuccessRoute
+  AppFlightIdHistoryRoute: typeof AppFlightIdHistoryRoute
+  AppFlightIdRiskRoute: typeof AppFlightIdRiskRoute
   AppConflictIdScenarioScenarioIdRoute: typeof AppConflictIdScenarioScenarioIdRoute
 }
 
@@ -612,7 +600,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppCrewAvailabilityRoute: AppCrewAvailabilityRoute,
   AppCrewMatchRoute: AppCrewMatchRoute,
   AppCrewProfilesRoute: AppCrewProfilesRoute,
-  AppFlightIdRoute: AppFlightIdRouteWithChildren,
+  AppFlightIdRoute: AppFlightIdRoute,
   AppKpiMetricRoute: AppKpiMetricRoute,
   AppSettingsAutoHealRoute: AppSettingsAutoHealRoute,
   AppConflictIdConfirmRoute: AppConflictIdConfirmRoute,
@@ -620,6 +608,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppConflictIdSuccessRoute: AppConflictIdSuccessRoute,
   AppCrewAssignCrewIdRoute: AppCrewAssignCrewIdRoute,
   AppCrewShiftSuccessRoute: AppCrewShiftSuccessRoute,
+  AppFlightIdHistoryRoute: AppFlightIdHistoryRoute,
+  AppFlightIdRiskRoute: AppFlightIdRiskRoute,
   AppConflictIdScenarioScenarioIdRoute: AppConflictIdScenarioScenarioIdRoute,
 }
 
