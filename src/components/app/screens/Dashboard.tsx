@@ -304,7 +304,7 @@ export function Dashboard() {
               id: "CF-2403",
               type: "Maintenance Delay",
               status: "Review",
-              time: "1h ago",
+              time: "13:31:48 08-05-2026",
             },
           ].map((conflict) => (
             <div
