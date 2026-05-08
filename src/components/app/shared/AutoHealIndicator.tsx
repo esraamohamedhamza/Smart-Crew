@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Zap } from "lucide-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useNavigate } from "@tanstack/react-router";
 
 export function AutoHealIndicator() {

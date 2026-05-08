@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams, useNavigate } from "@tanstack/react-router";
 import { GlassCard } from "../shared/GlassCard";
 import { CheckCircle, Sparkles, ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 
 export function SuccessState() {
