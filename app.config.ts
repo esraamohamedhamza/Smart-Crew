@@ -9,13 +9,21 @@ export default createApp({
     {
       name: "client",
       type: "client",
-      handler: "./src/start.ts", // هنا بنربطه بملف الـ start اللي موجود في الـ src عندك
+      handler: "./src/start.ts",
       plugins: () => [
         TanStackRouterVite(),
         react(),
         tailwindcss(),
         tsconfigPaths(),
       ],
+      // إجبار الفايل إنه يعامل حزم السيرفر كـ External ميعملش تضارب في المتصفح
+      vite: {
+        build: {
+          rollupOptions: {
+            external: ["node:async_hooks", "async_hooks"],
+          },
+        },
+      },
     },
   ],
 });
