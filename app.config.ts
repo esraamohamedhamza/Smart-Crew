@@ -7,18 +7,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default createApp({
   routers: [
     {
-      name: "public",
-      type: "static",
-      dir: "./.output/public",
-      base: "/",
-    },
-    {
       name: "client",
       type: "client",
       handler: "./src/start.ts",
-      target: "browser",
       plugins: () => [
-        // الـ Plugin ده هو اللي بيولد ملفات الـ Routes ويربطها بالـ Client
         TanStackRouterVite(),
         react(),
         tailwindcss(),
@@ -39,11 +31,5 @@ export default createApp({
         },
       ],
     },
-    {
-      name: "server",
-      type: "http",
-      handler: "./src/entry-server.ts", // أو المسار الخاص بـ entry-server عندك لو موجود
-      target: "server",
-    }
   ],
 });
