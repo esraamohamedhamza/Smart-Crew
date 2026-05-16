@@ -7,9 +7,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "preview": "vinxi preview",
+    "dev": "bunx vinxi dev",
+    "build": "bunx vinxi build",
+    "preview": "bunx vinxi preview",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
