@@ -10,7 +10,6 @@ export default createApp({
       name: "client",
       type: "client",
       handler: "./src/start.ts",
-      target: "browser",
       plugins: () => [
         TanStackRouterVite(),
         react(),
@@ -31,12 +30,6 @@ export default createApp({
           },
         },
       ],
-    },
-    {
-      name: "server",
-      type: "http",
-      handler: "./src/server.ts", // التعديل السحري هنا: ربطناه بملفك الفعلي
-      target: "server",
     },
   ],
 });
