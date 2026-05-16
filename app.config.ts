@@ -1,4 +1,4 @@
-import { defineConfig } from "vinxi/config";
+import { defineConfigFile } from "@tanstack/react-start/config";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
@@ -9,8 +9,8 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// هنا بنعرف الـ App كـ TanStack Start متكامل وليس Vite SPA عادي
-export default defineConfig({
+// استخدام المعالج الرسمي لـ TanStack لضمان أعلى توافق بدون مشاكل مسارات Vinxi
+export default defineConfigFile({
   routers: {
     client: {
       plugins: () => [
