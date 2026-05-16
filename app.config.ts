@@ -7,11 +7,22 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default createApp({
   routers: [
     {
+      name: "public",
+      type: "static",
+      dir: "./.output/public",
+      base: "/",
+    },
+    {
       name: "client",
       type: "client",
       handler: "./src/start.ts",
+      target: "browser",
       plugins: () => [
-        // الـ Plugin السريع ده بيعترض الـ import بتاع async_hooks ويحوله لـ Mock آمن فوراً في كود الـ Client
+        // الـ Plugin ده هو اللي بيولد ملفات الـ Routes ويربطها بالـ Client
+        TanStackRouterVite(),
+        react(),
+        tailwindcss(),
+        tsconfigPaths(),
         {
           name: "skip-async-hooks-for-browser",
           enforce: "pre",
@@ -26,11 +37,13 @@ export default createApp({
             }
           },
         },
-        TanStackRouterVite(),
-        react(),
-        tailwindcss(),
-        tsconfigPaths(),
       ],
     },
+    {
+      name: "server",
+      type: "http",
+      handler: "./src/entry-server.ts", // أو المسار الخاص بـ entry-server عندك لو موجود
+      target: "server",
+    }
   ],
 });
