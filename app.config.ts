@@ -10,6 +10,10 @@ export default createApp({
       name: "client",
       type: "client",
       handler: "./src/start.ts",
+      routes: (router) => {
+        // تحديد إن الـ Routes موجودة جوه src/routes بشكل صريح
+        return router.dir("./src/routes");
+      },
       plugins: () => [
         TanStackRouterVite(),
         react(),
