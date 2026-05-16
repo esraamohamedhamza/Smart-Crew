@@ -35,7 +35,7 @@ export default createApp({
     {
       name: "server",
       type: "http",
-      handler: "./src/entry-server.ts", // الـ Vinxi والـ Tanstack Start هيدوروا على الفايل ده لإدارة الـ Server لـ Netlify
+      handler: "./src/server.ts", // التعديل السحري هنا: ربطناه بملفك الفعلي
       target: "server",
     },
   ],
