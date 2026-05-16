@@ -3,7 +3,7 @@ import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { nodePolyfills } from "vite-plugin-node-polyfills"; // 1. بنستدعي العدّة هنا
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 export default createApp({
   routers: [
@@ -13,11 +13,11 @@ export default createApp({
       handler: "./src/start.ts",
       plugins: () => [
         nodePolyfills({
-          // 2. بنشغل العدّة هنا عشان تحمي الـ Build من خطأ الـ async_hooks
+          // بنحدد فقط الحزمة اللي مسببة الأزمة من غير ما نلمس الـ process عشان نمنع تضارب unenv
           include: ["async_hooks"],
           globals: {
-            Buffer: true,
-            process: true,
+            Buffer: false,
+            process: false,
           },
         }),
         TanStackRouterVite(),
