@@ -1,3 +1,4 @@
+import { defineConfig } from "vite";
 import { createApp } from "vinxi";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
@@ -10,6 +11,7 @@ export default createApp({
       name: "client",
       type: "client",
       handler: "./src/start.ts",
+      target: "browser",
       plugins: () => [
         TanStackRouterVite(),
         react(),
