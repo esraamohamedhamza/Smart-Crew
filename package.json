@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
-    "build": "vinxi build",
+    "build": "vinxi build && mkdir -p dist && cp -r .vinxi/build/client/* dist/ 2>/dev/null || true",
     "preview": "vinxi preview",
     "lint": "eslint .",
     "format": "prettier --write ."
