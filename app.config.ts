@@ -1,4 +1,4 @@
-import { defineConfig } from "vinxi/config";
+import { defineConfig } from "vinxi";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
