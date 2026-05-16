@@ -10,6 +10,7 @@ export default createApp({
       name: "client",
       type: "client",
       handler: "./src/start.ts",
+      target: "browser",
       plugins: () => [
         TanStackRouterVite(),
         react(),
@@ -30,6 +31,12 @@ export default createApp({
           },
         },
       ],
+    },
+    {
+      name: "server",
+      type: "http",
+      handler: "./src/entry-server.ts", // الـ Vinxi والـ Tanstack Start هيدوروا على الفايل ده لإدارة الـ Server لـ Netlify
+      target: "server",
     },
   ],
 });
