@@ -3,5 +3,4 @@
   publish = ".output/public"
 
 [build.environment]
-  # التأكيد على أن Vinxi يبني بنظام متوافق مع Netlify
   NITRO_PRESET = "netlify"
