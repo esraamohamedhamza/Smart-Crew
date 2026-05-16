@@ -1,19 +1,4 @@
-# ==========================================
-# Smart Crew AI - Source Control Ignore Rules
-# ==========================================
-
-# Production Builds & Environment
-node_modules/
-dist/
-dist-ssr/
-.output/
-.vinxi/
-.nitro/
-*.local
-.env
-.env.*
-
-# Application Logs
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -22,14 +7,23 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Cloudflare & Deployment Infrastructure
+node_modules
+dist
+dist-ssr
+.output
+.vinxi
+.tanstack/**
+.nitro
+*.local
+
+# Wrangler / Cloudflare
 .wrangler/
 .dev.vars
 
-# System & IDE Configurations
+# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea/
+.idea
 .DS_Store
 *.suo
 *.ntvs*

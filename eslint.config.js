@@ -6,14 +6,9 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  // تجاهل ملفات البناء وأي مخلفات برمجية سابقة
-  { ignores: ["dist", ".output", ".vinxi", ".lovable", "node_modules"] },
+  { ignores: ["dist", ".output", ".vinxi"] },
   {
-    extends: [
-      js.configs.recommended, 
-      ...tseslint.configs.recommended,
-      eslintPluginPrettier // دمج Prettier لضمان تنسيق الكود تلقائياً
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
@@ -25,14 +20,21 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn", 
-        { allowConstantExport: true }
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "server-only",
+              message:
+                "TanStack Start does not use the Next.js `server-only` package. Rename the module to `*.server.ts` or mark it with `@tanstack/react-start/server-only`.",
+            },
+          ],
+        },
       ],
-      // تفعيل التحذير للمتغيرات غير المستخدمة لضمان نظافة الكود
-      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-      //  
-      "@typescript-eslint/no-explicit-any": "off" 
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "@typescript-eslint/no-unused-vars": "off",
     },
-  }
+  },
+  eslintPluginPrettier,
 );
