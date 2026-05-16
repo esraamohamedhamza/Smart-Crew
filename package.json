@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
-    "build": "NITRO_PRESET=netlify vinxi build && mkdir -p .output/public && cp -r .vinxi/build/* .output/public/ 2>/dev/null || true",
+    "build": "vinxi build",
     "preview": "vinxi preview",
     "lint": "eslint .",
     "format": "prettier --write ."
