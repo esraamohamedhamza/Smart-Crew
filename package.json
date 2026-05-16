@@ -1,5 +1,6 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "smart-crew",
+  "author": "Esraa Hamza",
   "private": true,
   "sideEffects": false,
   "type": "module",
