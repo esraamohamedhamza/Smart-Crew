@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "build": "VITE_SKIP_TYPECHECK=true npx vite build",
+    "build": "VITE_SKIP_TYPECHECK=true npx vite build -- --external=@mediapipe/face_mesh",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "npx vite preview"
   },
@@ -18,8 +18,7 @@
     "lucide-react": "0.522.0",
     "date-fns": "^4.0.0",
     "vite": "latest",
-    "@vitejs/plugin-react": "latest",
-    "@mediapipe/face_mesh": "latest"
+    "@vitejs/plugin-react": "latest"
   },
   "devDependencies": {
     "@types/node": "^20.11.18",
